@@ -3,20 +3,20 @@ import React, { useEffect, useState } from "react";
 const ManageServices = () => {
     const [services, setservices] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:4000/services`)
+        fetch(`https://calm-atoll-54452.herokuapp.com/services`)
             .then((res) => res.json())
             .then((data) => setservices(data));
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     const handleDelete = (id) => {
-        const url = `http://localhost:4000/services/${id}`;
+        const url = `https://calm-atoll-54452.herokuapp.com/services/${id}`;
         fetch(url, {
             method: "DELETE",
         })
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
-                if (data.deletedCount>0 ) {
+                if (data.deletedCount > 0) {
                     const remaining = services.filter(
                         (service) => service._id !== id
                     );
